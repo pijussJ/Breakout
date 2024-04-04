@@ -7,6 +7,7 @@ public class Ball : MonoBehaviour
     public float speed = 5;
     Rigidbody2D rb;
     public Transform spawnPoint;
+    public AudioClip hitSound;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -22,6 +23,7 @@ public class Ball : MonoBehaviour
 
         if (brick != null)
         {
+            AudioManager.Play(hitSound);
             brick.Damage();
         }
     }

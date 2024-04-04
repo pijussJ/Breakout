@@ -13,6 +13,9 @@ public class GameManager : MonoBehaviour
 
     public GameObject winScreen;
     public GameObject loseScreen;
+
+    public AudioClip winSound;
+    public AudioClip loseSound;
     private void Update()
     {
         scoreText.text = "Score : " + score;
@@ -20,12 +23,14 @@ public class GameManager : MonoBehaviour
 
         if (lives <= 0)
         {
+            AudioManager.Play(loseSound);
             loseScreen.SetActive(true);
             enabled = false;
         }
 
         if (FindObjectsOfType<Brick>().Length < 1)
         {
+            AudioManager.Play(winSound);
             winScreen.SetActive(true);
             enabled = false;
         }
