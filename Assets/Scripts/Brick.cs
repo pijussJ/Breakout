@@ -6,7 +6,7 @@ public class Brick : MonoBehaviour
 {
     [SerializeField]private int hp;
     public ParticleSystem ps;
-
+    public int score = 100;
     public void Damage()
     {
         hp--;
@@ -14,6 +14,7 @@ public class Brick : MonoBehaviour
         {
             ps.Play();
             Destroy(gameObject);
+            GameManager.score += score;
         }
     }
 }
